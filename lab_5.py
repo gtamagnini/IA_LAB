@@ -3,16 +3,13 @@ import matplotlib.pyplot as plt
 from sklearn.neural_network import MLPRegressor
 
 def calcular_media_desvio(resultados):
-    """Calcula a média e o desvio padrão dos resultados."""
     return np.mean(resultados), np.std(resultados)
 
 def carregar_dados(arquivo='teste2.npy'):
-    """Carrega os dados de um arquivo .npy."""
     dados = np.load(arquivo)
     return dados[0], np.ravel(dados[1])
 
 def treinar_avaliar_mlp(x, y):
-    """Treina e avalia um regressor MLP."""
     regr = MLPRegressor(
         hidden_layer_sizes=(10,),
         max_iter=1000,
@@ -31,7 +28,6 @@ def treinar_avaliar_mlp(x, y):
     return erro
 
 def plotar_resultados(x, y, loss_curve, y_pred):
-    """Gera gráficos dos resultados."""
     plt.figure(figsize=[14, 7])
     
     plt.subplot(1, 3, 1)
@@ -55,11 +51,9 @@ def plotar_resultados(x, y, loss_curve, y_pred):
     plt.show()
 
 def main():
-    """Função principal para executar o treinamento e avaliação."""
     resultados_erro = []
     
     for _ in range(10):
-        print('Carregando dados...')
         x, y = carregar_dados()
         
         print('Treinando e avaliando o regressor MLP...')
